@@ -1,0 +1,12 @@
+{% extends "skeleton.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block body %}
+    <h1>Index Page</h1>
+    {% if user.is_authenticated %}
+    <h2>{{ user.username }}</h2>
+    {% else %}
+    <h2>Not authenticated</h2>
+    {% endif %}
+{% endblock %}

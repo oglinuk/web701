@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+<body>
+    <!-- Nav bar -->
+    <div class="container" id="navbar">
+        <div class="header clearfix">
+          <div class="row">
+            <nav>
+              {% if request.user.is_authenticated %}
+              <ul class="nav nav-pills pull-right">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+              {% else %}
+              <ul class="nav nav-pills pull-right">
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+              </ul>
+              {% endif %}
+            </nav>
+          </div>
+        </div>
+    </div>
+    <br>
+    <!-- Body section -->
+    <div class="container" text-align="center">
+        {% block body %}
+        {% endblock %}
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- Footer section -->
+    <footer class="footer">
+      <div class="container" text-align="center">
+        <p>
+            Created by <a href="https://github.com/OGLinuk">OGLinuk</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+  <br>
+</body>
+</html>
