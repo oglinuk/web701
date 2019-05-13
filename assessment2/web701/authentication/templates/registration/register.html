@@ -10,7 +10,8 @@
         <p>Errors in the form</p>
         {% endif %}
 
-        {{ form }}
+        {{ form.as_p }}
+        {{ profile_form.as_p }}
 
         <p><input type="submit" value="register"></p>
     </form>
