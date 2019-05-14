@@ -1,0 +1,17 @@
+{% extends "skeleton.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block body %}
+    <form method="POST" action="{% url 'edit_profile' %}">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <p>Errors in the form</p>
+        {% endif %}
+
+        {{ profile_form.as_p }}
+
+        <p><input type="submit" value="confirm"></p>
+    </form>
+{% endblock %}

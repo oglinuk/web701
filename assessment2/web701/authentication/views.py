@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
-from .forms import ProfileForm
+from .forms import ProfileForm, EditProfileForm
 
 def index(request):
     return render(request, 'authentication/index.html')
@@ -36,3 +36,20 @@ def register(request):
 
 def view_profile(request):
     return render(request, 'authentication/view_profile.html')
+
+def edit_profile(request):
+    if request.method == 'POST':
+        profile_form = EditProfileForm(request.POST, instance=request.user.profile)
+
+        if profile_form.is_valid():
+            profile = profile_form.save(commit=False)
+
+            profile.save()
+
+            return redirect('view_profile')
+    else:
+        profile_form = EditProfileForm(instance=request.user.profile)
+
+    context = {'profile_form': profile_form}
+    
+    return render(request, 'authentication/edit_profile.html', context)

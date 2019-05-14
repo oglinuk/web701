@@ -5,3 +5,12 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('email', 'address', 'phone')
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = (
+            'email',
+            'address',
+            'phone'
+        )
