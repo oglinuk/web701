@@ -1,0 +1,63 @@
+{% extends "skeleton.html" %}
+
+{% block title %}Calculator{% endblock %}
+
+{% block body %}
+    <h1>Price Calculator</h1>
+    <h3>Price: ${{ price }}</h3>
+    <br>
+    <form method="POST" action="{% url 'calculator' %}">
+        {% csrf_token %}
+        Size:&nbsp;
+        <select name="size">
+            <option value="1">Small</option>
+            <option value="2">Medium</option>
+            <option value="3">Large</option>
+        </select>
+        <br>
+        <br>
+        Taste:&nbsp;
+        <select name="taste">
+            <option value="1">Bitter</option>
+            <option value="2">Semi-sweet</option>
+            <option value="3">Sweet</option>
+        </select>  
+        <br>
+        <br>
+        Yield(g):&nbsp;
+        <input type="number" name="yield" min="1" max="10" value="1">
+        <br>
+        <br>
+        Color:&nbsp;
+        <select name="color">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="orange">Orange</option>
+            <option value="green">Green</option>
+            <option value="purple">Purple</option>
+            <option value="pink">Pink</option>
+            <option value="yellow">Yellow</option>
+        </select> 
+        <br>
+        <br>
+        Nutritional value
+        <br>
+        &nbsp;&nbsp;&nbsp;Sugar content(g):&nbsp;
+        <input type="number" name="sugar" min="1" max="100" value="5">
+        <br>
+        &nbsp;&nbsp;&nbsp;Calories:&nbsp;
+        <input type="number" name="calories" min="1" max="1000" value="42">
+        <br>
+        &nbsp;&nbsp;&nbsp;Protein(g):&nbsp;
+        <input type="number" name="protein" min="1" max="100" value="5">
+        <br>
+        &nbsp;&nbsp;&nbsp;Fiber(g):&nbsp;
+        <input type="number" name="fiber" min="1" max="100" value="5">
+        <br>
+        &nbsp;&nbsp;&nbsp;Vitamin C(mg):&nbsp;
+        <input type="number" name="vitaminc" min="1" max="1000" value="275">
+        <br>
+        <br>
+        <input type="submit" value="calculate">
+    </form>
+{% endblock %}
