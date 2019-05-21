@@ -34,6 +34,7 @@ LOGIN_REDIRECT_URL = '/'
 
 INSTALLED_APPS = [
     'authentication',
+    'auction',
     'calculator',
     'django.contrib.admin',
     'django.contrib.auth',
