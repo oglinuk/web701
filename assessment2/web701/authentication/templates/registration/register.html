@@ -3,16 +3,24 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <form method="POST" action="{% url 'register' %}">
-        {% csrf_token %}
 
-        {% if form.errors %}
-        <p>Errors in the form</p>
-        {% endif %}
+{% if user.is_authenticated %}
 
-        {{ form.as_p }}
-        {{ profile_form.as_p }}
+<form method="POST" action="{% url 'register' %}">
+    {% csrf_token %}
 
-        <p><input type="submit" value="register"></p>
-    </form>
+    {% if form.errors %}
+    <p>Errors in the form</p>
+    {% endif %}
+
+    {{ form.as_p }}
+    {{ profile_form.as_p }}
+
+    <p><input type="submit" value="register"></p>
+</form>
+
+{% else %}
+<h2>Not authenticated</h2>
+{% endif %}
+
 {% endblock %}

@@ -1,6 +1,39 @@
 /* General CSS */
+h1 {
+  color: purple;
+}
+
+h2 {
+  color: green
+}
+
 #navbar {
   padding-top: 1.5%;
 }
 
+#main-color {
+  color: red;
+}
 
+#grayout {
+  opacity: 0.4; 
+}
+
+#grayout:hover {
+  opacity: 1;
+}
+
+video {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  animation-name: ra-ra-rasputin;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ra-ra-rasputin {
+  0%   { left:-45%; }
+  50%  { left:45%; }
+  100% { left:-45%; }
+}

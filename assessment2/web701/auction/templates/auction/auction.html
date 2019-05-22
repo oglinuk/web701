@@ -3,6 +3,9 @@
 {% block title %}Auction{% endblock %}
 
 {% block body %}
+
+{% if user.is_authenticated %}
+
 <h1>Auction | <a href="{% url 'sell_item' %}">Sell Item</a></h1>
 <hr>
 <h3>Auction Listings</h3>
@@ -42,4 +45,9 @@
     </li>
     {% endfor %}
 </ol>
+
+{% else %}
+<h2>Not authenticated</h2>
+{% endif %}
+
 {% endblock %}

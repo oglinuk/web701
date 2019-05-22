@@ -1,12 +1,70 @@
 {% extends "skeleton.html" %}
+{% load static %}
 
 {% block title %}Index{% endblock %}
 
-{% block body %} 
-    <h1>Index Page</h1>
-    {% if user.is_authenticated %}
+{% block body %}
+
+{% if user.is_authenticated %}
+
+<h1>Index Page</h1>
+<div class="container text-center" id="main-color">
     <h2>{{ user.username }}</h2>
-    {% else %}
-    <h2>Not authenticated</h2>
-    {% endif %}
+    <br>
+    <audio autoplay loop>
+        <source src="/static/music/rararasputin.mp3" type="audio/mpeg">
+    </audio>
+    <a href="{% url 'auction' %}">
+        <video autoplay loop>
+            <source src="{% static 'images/rararasputin.mp4' %}" type="audio/mp4">
+        </video>
+    </a>
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{% static 'images/raspberries.jpg' %}" class="img-responsive" id="grayout" style="width:100%" alt="raspberries">
+            <p>Raspberries</p>
+            <p>
+                Raw raspberries are 86% water, 12% carbohydrates, and have about 1% each of protein 
+                and fat (table). In a 100 gram amount, raspberries supply 53 calories and 6.5 grams 
+                of dietary fiber. The aggregate fruit structure contributes to raspberry's nutritional 
+                value, as it increases the proportion of dietary fiber, which is among the highest 
+                known in whole foods, up to 6% fiber per total weight. Raspberries are a rich source
+                (20% or more of the Daily Value, DV) of vitamin C (32% DV), manganese (32% DV) and 
+                dietary fiber (26% DV) (table). Raspberries are a low-glycemic index food, with total 
+                sugar content of only 4% and no starch.
+                <a href="https://en.wikipedia.org/wiki/Raspberry#Nutrients">[source]</a>
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <img src="{% static 'images/blackberries.jpg' %}" class="img-responsive" id="grayout" style="width:100%" alt="blackberries">
+            <p>Blackberries</p>
+            <p>
+                Cultivated blackberries are notable for their significant contents of dietary 
+                fiber, vitamin C, and vitamin K (table). A 100 gram serving of raw blackberries 
+                supplies 43 calories and 5 grams of dietary fiber or 25% of the recommended Daily 
+                Value (DV) (table). In 100 grams, vitamin C and vitamin K contents are 25% and 
+                19% DV, respectively, while other essential nutrients are low in content (table).
+                <a href="https://en.wikipedia.org/wiki/Blackberry#Nutrients">[source]</a> 
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <img src="{% static 'images/blueberries.jpg' %}" class="img-responsive" id="grayout" style="width:100%" alt="blueberries">
+            <p>Blueberries</p>
+            <p>
+                Blueberries consist of 14% carbohydrates, 0.7% protein, 0.3% fat and 84% water (table). 
+                They contain only negligible amounts of micronutrients, with moderate levels (relative 
+                to respective Daily Values) (DV) of the essential dietary mineral manganese, vitamin C, 
+                vitamin K and dietary fiber (table). Generally, nutrient contents of blueberries are 
+                a low percentage of the DV (table). One serving provides a relatively low caloric value 
+                of 57 kcal per 100 g serving and glycemic load score of 6 out of 100 per day.
+                <a href="https://en.wikipedia.org/wiki/Blueberries#Nutrients">[source]</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<h2>Not authenticated</h2>
+{% endif %}
+
 {% endblock %}

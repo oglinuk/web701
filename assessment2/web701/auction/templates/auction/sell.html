@@ -3,17 +3,25 @@
 {% block title %}Sell Item{% endblock %}
 
 {% block body %}
+
+{% if user.is_authenticated %}
+
 <h1>Sell Item</h1>
 <form method="POST" action="{% url 'sell_item' %}">
-        {% csrf_token %}
+    {% csrf_token %}
 
-        Name:&nbsp; <input type="input" name="name">
-        <br>
-        Price:&nbsp; <input type="number" step="0.01" name="price">
-        <br>
-        Quantity:&nbsp; <input type="number" step="1" name="quantity">
-        <br>
-        <br>
-        <input type="submit" value="register">
-    </form>
+    Name:&nbsp; <input type="input" name="name">
+    <br>
+    Price:&nbsp; <input type="number" step="0.01" name="price">
+    <br>
+    Quantity:&nbsp; <input type="number" step="1" name="quantity">
+    <br>
+    <br>
+    <input type="submit" value="register">
+</form>
+
+{% else %}
+<h2>Not authenticated</h2>
+{% endif %}
+
 {% endblock %}

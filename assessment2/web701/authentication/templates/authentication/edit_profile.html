@@ -3,15 +3,25 @@
 {% block title %}Edit Profile{% endblock %}
 
 {% block body %}
-    <form method="POST" action="{% url 'edit_profile' %}">
-        {% csrf_token %}
 
-        {% if form.errors %}
-        <p>Errors in the form</p>
-        {% endif %}
+{% if user.is_authenticated %}
 
-        {{ profile_form.as_p }}
+<h1>Profile</h1>
+<br>
+<form method="POST" action="{% url 'edit_profile' %}">
+    {% csrf_token %}
 
-        <p><input type="submit" value="confirm"></p>
-    </form>
+    {% if form.errors %}
+    <p>Errors in the form</p>
+    {% endif %}
+
+    {{ profile_form.as_p }}
+
+    <input type="submit" value="confirm">
+</form>
+
+{% else %}
+<h2>Not authenticated</h2>
+{% endif %}
+
 {% endblock %}

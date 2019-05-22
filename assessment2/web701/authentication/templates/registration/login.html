@@ -3,21 +3,29 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    {% if form.errors %}
-    <p>Wrong username or password</p>
-    {% endif %}
 
-    {% if next %}
-    <p>Access denied</p>
-    {% endif %}
+{% if user.is_authenticated %}
 
-    <form method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
+{% if form.errors %}
+<p>Wrong username or password</p>
+{% endif %}
 
-        <p>Username: {{ form.username }}</p>
-        <p>Password: {{ form.password }}</p>
+{% if next %}
+<p>Access denied</p>
+{% endif %}
 
-        <p><input type="submit" value="login"></p>
-        <input type="hidden" name="next" value="{{ next }}">
-    </form>
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <p>Username: {{ form.username }}</p>
+    <p>Password: {{ form.password }}</p>
+
+    <p><input type="submit" value="login"></p>
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{% else %}
+<h2>Not authenticated</h2>
+{% endif %}
+
 {% endblock %}
