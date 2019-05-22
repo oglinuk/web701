@@ -4,8 +4,6 @@
 
 {% block body %}
 
-{% if user.is_authenticated %}
-
 <form method="POST" action="{% url 'register' %}">
     {% csrf_token %}
 
@@ -18,9 +16,5 @@
 
     <p><input type="submit" value="register"></p>
 </form>
-
-{% else %}
-<h2>Not authenticated</h2>
-{% endif %}
 
 {% endblock %}

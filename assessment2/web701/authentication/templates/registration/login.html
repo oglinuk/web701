@@ -4,8 +4,6 @@
 
 {% block body %}
 
-{% if user.is_authenticated %}
-
 {% if form.errors %}
 <p>Wrong username or password</p>
 {% endif %}
@@ -23,9 +21,5 @@
     <p><input type="submit" value="login"></p>
     <input type="hidden" name="next" value="{{ next }}">
 </form>
-
-{% else %}
-<h2>Not authenticated</h2>
-{% endif %}
 
 {% endblock %}
