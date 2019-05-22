@@ -1,0 +1,19 @@
+{% extends "skeleton.html" %}
+
+{% block title %}Sell Item{% endblock %}
+
+{% block body %}
+<h1>Sell Item</h1>
+<form method="POST" action="{% url 'sell_item' %}">
+        {% csrf_token %}
+
+        Name:&nbsp; <input type="input" name="name">
+        <br>
+        Price:&nbsp; <input type="number" step="0.01" name="price">
+        <br>
+        Quantity:&nbsp; <input type="number" step="1" name="quantity">
+        <br>
+        <br>
+        <input type="submit" value="register">
+    </form>
+{% endblock %}

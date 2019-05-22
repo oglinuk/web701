@@ -3,5 +3,43 @@
 {% block title %}Auction{% endblock %}
 
 {% block body %}
-<h1>Auction</h1>
+<h1>Auction | <a href="{% url 'sell_item' %}">Sell Item</a></h1>
+<hr>
+<h3>Auction Listings</h3>
+<ol>
+    {% for listing in listings.Items %}
+    <li>
+        Name: {{ listing.name }}
+        <br>
+        Quantity: {{ listing.quantity }}
+        <br>
+        Price: {{ listing.price }}
+        <br>
+        <br>
+        {% if listing.bidders %}
+            {% for bidder in listing.bidders %}
+                Bidder: {{ bidder.name }}
+                &nbsp;
+                Quantity: {{ bidder.quantity }}
+                &nbsp;
+                Price: {{ bidder.price }}
+                <br>
+            {% endfor %}
+        {% endif %}
+        <br>
+        <form method="POST" action="{% url 'bid_item' %}">
+            {% csrf_token %}
+            Quantity:&nbsp;
+            <input type="number" name="quantity" min="1" max="{{listing.quantity}}" value="1">
+            <br>
+            <input type="hidden" name="price" value="{{ listing.price }}">
+            <input type="hidden" name="listing" value="{{ listing.name }}">
+            <input type="hidden" name="user" value="{{ request.user.username }}">
+            <input type="submit" value="bid">
+        </form>
+        <br>
+        <br>
+    </li>
+    {% endfor %}
+</ol>
 {% endblock %}
