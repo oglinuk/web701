@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
 <body>
     <!-- Nav bar -->
@@ -17,16 +20,21 @@
           <div class="row">
             <nav>
               {% if request.user.is_authenticated %}
-              <ul class="nav nav-pills pull-right">
+              <ul class="nav justify-content-end">
                 <li><a href="{% url 'index' %}">Home</a></li>
+                &nbsp;&nbsp;&nbsp;
                 <li><a href="{% url 'view_profile' %}">Profile</a></li>
+                &nbsp;&nbsp;&nbsp;
                 <li><a href="{% url 'auction' %}">Auction</a></li>
+                &nbsp;&nbsp;&nbsp;
                 <li><a href="{% url 'calculator' %}">Calculator</a></li>
+                &nbsp;&nbsp;&nbsp;
                 <li><a href="{% url 'logout' %}">Logout</a></li>
               </ul>
               {% else %}
-              <ul class="nav nav-pills pull-right">
+              <ul class="nav justify-content-end">
                 <li><a href="{% url 'register' %}">Register</a></li>
+                &nbsp;&nbsp;&nbsp;
                 <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
               </ul>
               {% endif %}
